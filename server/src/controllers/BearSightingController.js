@@ -18,13 +18,15 @@ exports.getSightingById = (req, res, next) => {
 
 exports.getSightings = (req, res, next) => {
   console.log(req.query)
+  const sortValue = parseInt(req.query.sort) === 1 || parseInt(req.query.sort) === -1
+    ? { num_bears: req.query.sort }
+    : { created: 1 }
 
   BearSighting.find({
-    $text: {
-      $search: req.query.bear_type
-    }
+    bear_type: { '$regex' : req.query.bear_type || '', '$options' : 'i' },
+    zip_code: { '$regex' : req.query.zip_code || '', '$options' : 'i' }
   })
-    .sort({ created: 'asc' })
+    .sort(sortValue)
     .then(docs => res.json(docs))
     .catch(error => next(error))
 }

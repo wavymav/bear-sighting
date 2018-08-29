@@ -22,9 +22,6 @@ const bearSightingSchema = new mongoose.Schema({
   }
 })
 
-bearSightingSchema.index({
-  bear_type: 'text',
-  zip_code: 'text'
-})
+bearSightingSchema.index({ bear_type: 'text' })
 
 module.exports = mongoose.model('BearSighting', bearSightingSchema)
