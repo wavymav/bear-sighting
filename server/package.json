@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "jest": "^23.5.0",
+    "mocha": "^5.2.0",
+    "mongoose": "5.2.8",
+    "mongoose-validator": "^2.1.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.3",
+    "supertest": "^3.1.0"
+  }
+}
